@@ -7,7 +7,7 @@ const middleware = require("./middleware");
 const cors = require("cors");
 const app = express();
 const bcrypt = require("bcrypt");
-const path = require('path');
+
 
 mongoose
   .connect(
@@ -124,10 +124,5 @@ app.get("/exercises/exercise/:id", middleware, async (req, res) => {
   }
 });
 
-app.use(express.static(path.join(__dirname,'./client/build')))
-
-app.get('*', function(req,res){
-  res.sendFile(path.join(__dirname,"./client/build/index.html"))
-});
 
 app.listen(3006, () => console.log("server running... on 3006"));
